@@ -1,0 +1,10 @@
+# Config for the database
+[mysqld]
+# Folder of the database
+datadir = /var/lib/mysql
+# Which IP of the network can connect (* = XXX.XXX.XX.XX)
+bind_address=*
+# Which port is listening
+port = 3306
+# Name of the user
+user = mysql
