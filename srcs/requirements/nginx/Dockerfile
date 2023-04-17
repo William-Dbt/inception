@@ -14,7 +14,6 @@ RUN openssl req -x509 -nodes -out /etc/nginx/ssl/ssl_certif.crt -keyout /etc/ngi
 
 RUN chown -R www-data:www-data /var/www/html
 
-EXPOSE 8080
+EXPOSE 443
 
-# CMD ["sh"]
 CMD ["nginx", "-g", "daemon off;"]
