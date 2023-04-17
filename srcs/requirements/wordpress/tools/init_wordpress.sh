@@ -7,7 +7,7 @@ done
 
 echo "[MySQL] Service has started!"
 
-# Avoir PHP running problems
+# Avoid PHP running problems
 if [ ! -d "/run/php" ]; then
 	mkdir -p /run/php
 	touch /run/php/php7.3-fpm.pid
