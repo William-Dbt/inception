@@ -1,7 +1,7 @@
 FROM debian:buster
 
 RUN apt-get update -y && apt-get upgrade -y
-RUN apt-get install -y php7.3 php-fpm php-mysql mariadb-client wget
+RUN apt-get install -y php7.3 php-fpm php-mysql mariadb-client wget sendmail
 
 # The installation of wordpress is done with WP-CLI (https://wp-cli.org/fr/)
 # https://make.wordpress.org/cli/handbook/guides/installing/
