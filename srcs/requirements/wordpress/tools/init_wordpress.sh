@@ -6,7 +6,7 @@
 # done
 # echo "[MySQL] Service has started!"
 
-sleep 5
+sleep 40
 
 # Avoid PHP running problems
 if [ ! -d "/run/php" ]; then
@@ -24,11 +24,11 @@ fi
 # Check if the configuration of wordpress is already done, if not, start the configuration and installation
 # https://make.wordpress.org/cli/handbook/how-to/how-to-install/
 if [ ! -f "wp-config.php" ]; then
-	echo "[Wordpress] Generate config file..."
-	wp config create --dbname=$SQL_DATABASE_NAME \
+	echo "[Wordpress] Create config file..."
+	wp config create --dbname=wordpress \
 					 --dbuser=$SQL_USER \
 					 --dbpass=$SQL_PASSWORD \
-					 --dbhost=mariadb:3306 \
+					 --dbhost=mariadb:3306 --path='/var/www/html' \
 					 --allow-root
 	echo "[Wordpress] Done!"
 
@@ -51,5 +51,3 @@ if [ ! $(wp user get $WP_USER_USERNAME --allow-root) ]; then
 				   --allow-root
 	echo "[Wordpress] Done!"
 fi
-
-/usr/sbin/php-fpm7.3

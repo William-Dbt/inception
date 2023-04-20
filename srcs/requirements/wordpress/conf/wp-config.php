@@ -38,7 +38,7 @@ define('DB_CHARSET', 'utf8');
 /** Type de collation de la base de données.
   * N’y touchez que si vous savez ce que vous faites.
   */
-define('DB_COLLATE', '');
+define('DB_COLLATE', 'utf8_general_ci');
 
 /**#@+
  * Clés uniques d’authentification et salage.

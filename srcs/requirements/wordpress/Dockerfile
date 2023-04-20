@@ -24,4 +24,5 @@ RUN chmod +x /var/www/init_wordpress.sh
 WORKDIR /var/www/html
 EXPOSE 9000
 
-CMD ["/var/www/init_wordpress.sh"]
+ENTRYPOINT ["/var/www/init_wordpress.sh"]
+CMD ["/usr/sbin/php-fpm7.3"]
