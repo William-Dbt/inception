@@ -16,6 +16,18 @@ services:
       # - inception
     restart: always
 
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb
+    expose:
+      - "3306"
+    env_file: .env
+    volumes:
+      - sql-data:/var/lib/mysql
+    # networks:
+      # - inception
+    restart: always
+
 volumes:
   wp-data:
     driver: local
@@ -23,3 +35,10 @@ volumes:
       type: volumes
       o: bind
       device: /home/william/data/wordpress
+
+  sql-data:
+    driver: local
+    driver_opts:
+      type: volumes
+      o: bind
+      device: /home/william/data/mysql
