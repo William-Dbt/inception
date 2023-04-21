@@ -1,0 +1,25 @@
+# https://docs.docker.com/compose/compose-file/compose-file-v3/
+version: "3.8"
+
+services:
+  nginx:
+    container_name: nginx
+    # depends_on:
+      # - wordpress
+    build: ./requirements/nginx
+    ports:
+      - 443:443
+    env_file: .env
+    volumes:
+      - wp-data:/var/www/html
+    # networks:
+      # - inception
+    restart: always
+
+volumes:
+  wp-data:
+    driver: local
+    driver_opts:
+      type: volumes
+      o: bind
+      device: /home/william/data/wordpress
