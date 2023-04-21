@@ -1,18 +1,16 @@
 FROM debian:buster
 
-EXPOSE 3306
+RUN apt-get update -y && apt-get upgrade -y
+RUN apt-get install -y mariadb-server mariadb-client procps
 
-# Install required packages
-RUN apt-get update -y
-RUN apt-get upgrade -y
-RUN apt-get install -y mariadb-server
-RUN apt-get install -y mariadb-client
-
-# Replace the config file by our
-COPY conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
-COPY tools/db-execute.sh /tmp
+# Copy our config file and our script to configure and init mysql database
+COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY tools/init_database.sh /etc/mysql
 
 # Make sure that we can execute the script
-RUN chmod 755 /tmp/db-execute.sh
+RUN chown -R mysql:root /etc/mysql
+RUN chmod +x /etc/mysql/init_database.sh
 
-ENTRYPOINT ["sh", "/tmp/db-execute.sh"]
+EXPOSE 3306
+
+CMD ["/etc/mysql/init_database.sh"]
