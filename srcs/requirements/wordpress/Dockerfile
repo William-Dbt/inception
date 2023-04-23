@@ -13,10 +13,8 @@ RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 RUN mkdir -p /var/www/html && chown -R www-data:www-data /var/www
 
 # Modifying php config files
-# Modify the deamon config line to 'no' to keep php in foreground
-COPY conf/php-fpm.conf /etc/php/7.3/fpm/php-fpm.conf
 # Modify the listen port to 9000 and uncomment the 'clear_env' line to avoid problem with our environment
-COPY conf/www.conf /etc/php/7.3/pool.d/www.conf
+COPY conf/inception.conf /etc/php/7.3/pool.d/inception.conf
 
 # Move the config script in the docker
 COPY tools/init_wordpress.sh /var/www
