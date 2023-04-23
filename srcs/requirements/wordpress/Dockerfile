@@ -14,7 +14,8 @@ RUN mkdir -p /var/www/html && chown -R www-data:www-data /var/www
 
 # Modifying php config files
 # Modify the listen port to 9000 and uncomment the 'clear_env' line to avoid problem with our environment
-COPY conf/inception.conf /etc/php/7.3/pool.d/inception.conf
+COPY conf/www.conf /etc/php/7.3/pool.d
+COPY conf/www.conf /etc/php7.3/php-fpm.d
 
 # Move the config script in the docker
 COPY tools/init_wordpress.sh /var/www
