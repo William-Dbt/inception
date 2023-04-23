@@ -1,20 +1,21 @@
 #!/bin/sh
 
-service mysql start
-
+echo "Check for \`mysql\` database..."
 # Create mysql database if not exists
 if [ ! -d "/var/lib/mysql/mysql" ]; then
-	echo "[MySQL] mysql database doesn't exists, creating one!"
+	echo "=> mysql database doesn't exists, creating one!"
 
-	chown -R mysql:mysql /var/lib/mysql
 	mysql_install_db --basedir=/usr --datadir=/var/lib/mysql --user=mysql --rpm
+	chown -R mysql:mysql /var/lib/mysql
 
-	echo "[MySQL] Done!"
+	echo "=> Done!"
 fi
+echo "OK!"
 
+echo "Check for \`wordpress\` database..."
 # Check if the wordpress database is already created
 if [ ! -d "/var/lib/mysql/wordpress" ]; then
-	echo "[MySQL] Creating wordpress database and basic user configuration..."
+	echo "=> Creating wordpress database and basic user configuration..."
 
 	cat << EOF > /tmp/querys_database.sql
 USE mysql;
@@ -28,8 +29,13 @@ GRANT ALL PRIVILEGES ON wordpress.* TO '${SQL_USER}'@'%';
 FLUSH PRIVILEGES;
 EOF
 
-	mysql -u root < /tmp/querys_database.sql
+	chmod 777 /tmp/querys_database.sql
+	mysqld --user=mysql --verbose --bootstrap < /tmp/querys_database.sql
 	rm -f /tmp/querys_database.sql
 
-	echo "[MySQL] Done!"
+	echo "=> Done!"
 fi
+echo "OK!"
+
+echo "Container now runnig mysqld."
+exec mysqld

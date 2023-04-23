@@ -11,5 +11,5 @@ clean_volumes:
 					docker volume rm $$(docker volume ls -q)
 					sudo rm -rf /home/william/data/mysql/* /home/william/data/wordpress/*
 
-clean:
+prune:
 			docker system prune -a
