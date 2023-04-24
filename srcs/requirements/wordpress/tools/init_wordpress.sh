@@ -53,6 +53,5 @@ if [[ -z $(wp user get $WP_USER_USERNAME --allow-root) ]]; then
 fi
 echo "OK!"
 
-sleep 5
 echo "Container now running php-fpm."
 /usr/sbin/php-fpm7.3 -F -R
