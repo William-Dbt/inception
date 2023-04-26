@@ -24,7 +24,7 @@ echo "Checking for wordpress configuration..."
 if [ ! -f "wp-config.php" ]; then
 	echo "=> Create config file..."
 	wp config create --dbname=wordpress \
-					 --dbuser=$SQL_USER \
+					 --dbuser=$SQL_USERNAME \
 					 --dbpass=$SQL_PASSWORD \
 					 --dbhost=mariadb:3306 --path='/var/www/html' \
 					 --allow-root
@@ -44,10 +44,10 @@ echo "OK!"
 echo "Checking for user configuration..."
 # Create another user (admin user already exists thanks to the wp core install)
 # https://developer.wordpress.org/cli/commands/user/
-if [[ -z $(wp user get $WP_USER_USERNAME --allow-root) ]]; then
-	echo "=> Creating new user ($WP_USER_USERNAME)"
-	wp user create $WP_USER_USERNAME $WP_USER_EMAIL \
-				   --user_pass=$WP_USER_PASSWORD \
+if [[ -z $(wp user get $WP_USERNAME --allow-root) ]]; then
+	echo "=> Creating new user ($WP_USERNAME)"
+	wp user create $WP_USERNAME $WP_EMAIL \
+				   --user_pass=$WP_PASSWORD \
 				   --allow-root
 	echo "=> Done!"
 fi
