@@ -1,5 +1,4 @@
 all:	up
-			@echo "###### DON'T FORGET TO ADD .ENV IN GITIGNORE ######"
 
 up:
 			docker-compose -f ./srcs/docker-compose.yml up --build
