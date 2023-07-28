@@ -18,6 +18,30 @@ The result is a wordpress website at the link `https://login.42.fr` wich **all s
 `fclean` to clean objects files and program file.  
 
 Once make is done all containers are up the wordpress website is available at `https://localhost`, to connect with the link `https://login.42.fr`, you have to add it in the file `/etc/hosts` after `127.0.0.1 localhost` as `127.0.0.1 localhost login.42.fr`.  
+An **.env** file is expected in the `./srcs` directory. Find an example below.  
+
+    # SQL variables
+    SQL_USERNAME=sql-fw57Jq0x3
+    SQL_PASSWORD=V56oWR2mc&v!
+    SQL_ROOT_PASSWORD=2TSE9QiLLK
+    
+    # Wordpress variables
+    WP_ADMIN_USERNAME=A-William
+    WP_ADMIN_PASSWORD=0jgPItyfti
+    WP_ADMIN_EMAIL=a-william@wdebotte.42.fr
+    
+    WP_USERNAME=William
+    WP_PASSWORD=d5mfzLu38C
+    WP_EMAIL=wdebotte@student.42.fr
+
+# Wordpress variables
+WP_ADMIN_USERNAME=A-William
+WP_ADMIN_PASSWORD=0jgPItyfti
+WP_ADMIN_EMAIL=a-william@wdebotte.42.fr
+
+WP_USERNAME=William
+WP_PASSWORD=d5mfzLu38C
+WP_EMAIL=wdebotte@student.42.fr`
 
 ## Help
 
