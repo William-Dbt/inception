@@ -47,7 +47,3 @@ WP_EMAIL=wdebotte@student.42.fr`
 
 To do this project I was inspired by this tutos: http://tuto.grademe.fr/inception/ and https://github.com/codesshaman/inception/tree/main mixed with documentations about all services (just ask google "install nginx / php / mariadb" on debian, severals tutos already exists).  
 Openclassrooms helps me to understand how docker works (https://openclassrooms.com/fr/courses/2035766-optimisez-votre-deploiement-en-creant-des-conteneurs-avec-docker).  
-
-## Score
-
-[![wdebotte's 42 Inception Score](https://badge42.vercel.app/api/v2/cl2zu1sil002509mf9zd91hy6/project/3056002)](https://github.com/JaeSeoKim/badge42)
